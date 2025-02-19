@@ -1,20 +1,29 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return """
-    <html>
-        <head>
-            <title>Flask App on Vercel</title>
-        </head>
-        <body>
-            <h1>Deploying Flask App at Vercel 🚀</h1>
-            <p>Welcome to the Flask app deployed on Vercel.</p>
-        </body>
-    </html>
-    """
+HTML_TEMPLATE = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App on Vercel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="text-primary">Welcome to My Flask App</h1>
+        <p class="lead">This Flask application is deployed on Vercel.</p>
+        <button class="btn btn-success" onclick="alert('Flask App is running!')">Click Me</button>
+    </div>
+</body>
+</html>
+"""
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route('/')
+def home():
+    return render_template_string(HTML_TEMPLATE)
+
+if __name__ == '__main__':
+    app.run(debug=True)
