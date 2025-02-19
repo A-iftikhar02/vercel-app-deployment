@@ -14,8 +14,6 @@ HTML_TEMPLATE = """
 <body>
     <div class="container text-center mt-5">
         <h1 class="text-primary">Welcome to My Flask App</h1>
-        <p class="lead">This Flask application is deployed on Vercel.</p>
-        <button class="btn btn-success" onclick="alert('Flask App is running!')">Click Me</button>
     </div>
 </body>
 </html>
